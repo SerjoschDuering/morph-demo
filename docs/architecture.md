@@ -18,9 +18,9 @@ Long-running agent work lives in a Node sidecar (`sidecar/bridge.mjs`). Claude A
 
 Flow:
 
-1. Renderer (React) → Tauri IPC → `morph-desktop`
-2. `morph-desktop` writes a JSON message to the sidecar's stdin
-3. Sidecar runs the agent turn, streams tool calls and text back on stdout
+1. `morph-desktop` spawns the sidecar; the sidecar opens a localhost WebSocket server on a random port and writes `{type: "ready", port}` to stdout
+2. `morph-desktop` reads that one line, then connects to the WebSocket — all subsequent traffic is JSON messages over WS
+3. Renderer (React) → Tauri IPC → `morph-desktop` → WS → sidecar runs the agent turn, streams tool calls and text back over WS
 4. `morph-desktop` parses the stream and emits Tauri events to the renderer
 
 The sidecar is stateless between turns from the Rust side's point of view — all session state lives in files on disk (compatible with Claude Code's session format) so the sidecar can be restarted without losing anything.

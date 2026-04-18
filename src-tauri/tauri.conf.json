@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/nicegui/nicegui/refs/heads/main/nicegui/static/tauri_conf_schema.json",
+  "$schema": "https://schema.tauri.app/config/2",
   "productName": "Morph",
   "version": "0.1.0",
   "identifier": "xyz.morphapp.desktop",

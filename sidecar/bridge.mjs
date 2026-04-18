@@ -1,6 +1,5 @@
 /**
- * Claude Bridge — Node.js sidecar wrapping @anthropic-ai/claude-agent-sdk
- * Patterns adapted from gn-workspace's ClaudeBridge.
+ * Claude Bridge — Node.js sidecar wrapping @anthropic-ai/claude-agent-sdk.
  */
 // Unset CLAUDECODE so the CLI doesn't refuse to launch inside another session
 delete process.env.CLAUDECODE;
