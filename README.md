@@ -103,7 +103,7 @@ Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenC
     <tr>
       <td>Persistent as workspace tabs</td>
       <td align="center">✅ <sub>many tabs, survive restart</sub></td>
-      <td align="center">⚠ <sub>side panel, project-scoped</sub></td>
+      <td align="center">❌ <sub>projects ≠ workspaces</sub></td>
       <td align="center">❌</td>
       <td align="center">⚠ <sub>single canvas slot</sub></td>
     </tr>
