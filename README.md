@@ -14,6 +14,33 @@ Morph is my attempt at that.
 
 ![Pitch](docs/diagrams/images/01-pitch-hub.png)
 
+## Why I'm building this
+
+I'm a developer who'd rather build than subscribe. Over the last year I stitched together my own stack piece by piece:
+
+- A self-hosted Lovable-style platform for deploying AI-coded apps online (so I'd stop clicking around HTML files lying on my laptop)
+- A self-hosted automation server for cron jobs, webhooks, scheduled agents
+- A self-hosted live-websites launcher for quick custom pages
+- A self-hosted file-transfer service
+- A growing pile of CLIs glued together with shell scripts
+
+Each piece worked. Together they became exhausting. I'd open 15 tabs to do one thing — one for the automation, one for the hosted app, one for the files, one for the chat, one for the database, one for the secret vault.
+
+Somewhere along the way **Claude Code became my default interface**. The chat was just faster than most UIs. Scripts, skills, CLIs, MCP — text is a great control surface.
+
+But text isn't always enough. Sometimes you need to *see* a chart, preview an invoice, scrub a 3D model, map something. And when you need a UI, it can't be yet another floating tab — it has to be **part of the conversation**, sharing state both ways.
+
+So here's the idea:
+
+- **The chat is the orchestrator.** Everything feeds into it.
+- **Workspaces organize your life.** Taxes, client work, generative-AI experiments, private projects — each with its own memory, skills, apps, and secrets.
+- **The AI builds UIs when they help.** Persistent React panels, not throwaway tabs. They share context with the agent and evolve over time.
+- **A cloud arm is always on.** Cron, triggers, webhooks, Telegram — same workspace you use locally, reachable from anywhere.
+- **Secrets, storage, sharing are first-class.** Not glued on as an afterthought.
+- **Model choice is yours.** Claude, GPT, Gemini, self-hosted Ollama — BYOK, swap freely.
+
+Think of Morph as a **vertical, self-hosted take on Claude Cowork**: the more you use it, the more it cannibalises the tools around it — until your workspace *is* your workflow.
+
 ## What it does
 
 Morph is a chat — but the chat is the control plane for **your whole stack**, and the interface evolves around you as you use it.
