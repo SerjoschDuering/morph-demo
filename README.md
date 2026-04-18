@@ -55,6 +55,30 @@ Morph is a chat — but the chat is the control plane for **your whole stack**, 
 
 **It grows with you.** The more you use it, the more it knows. Skills you teach stick. Memory accumulates. Workspaces branch off for each project. Over weeks, Morph stops being a tool you use and starts being the shape your work takes.
 
+## See it in action
+
+A clean workspace looks minimal — the chat is the interface. Everything grows from here.
+
+![Empty workspace](docs/images/app-empty-state.png)
+
+Over time, app panels accumulate alongside the chat. Here's a tax-assistant panel the agent built and now maintains — rows it found in your receipts, live totals, and a context pill telling the chat what the panel currently holds.
+
+![Tax assistant panel](docs/images/app-tax-assistant.png)
+
+Morph orchestrates the apps you already use. Here it's driving Rhino through an MCP server — capturing the viewport, writing a script, exporting a `.glb` — and showing the result in a 3D-viewer panel next to the chat.
+
+![3D viewer + Rhino MCP](docs/images/app-3d-viewer-mcp.png)
+
+When a panel is more useful than text, the agent builds one. This is a custom entity-network app it wrote to visualise a workspace of research notes — the panel reads workspace files, renders the graph, and feeds its selection state back into the chat.
+
+![Entity network panel](docs/images/app-entity-network.png)
+
+## Privacy, data residency, and model choice
+
+Each workspace has its own settings. You choose where data goes — local only, synced to your cloud instance, or shared with a team. You choose which models can process it — any provider, EU-only endpoints, or fully offline via Ollama. Secrets are per-workspace and can inherit from a global vault.
+
+![Settings panel](docs/images/app-settings-privacy.png)
+
 ## The story in four panels
 
 ![Story](docs/diagrams/images/02-comic-strip.png)
