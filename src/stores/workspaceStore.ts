@@ -269,11 +269,6 @@ export const useWorkspaceStore = create<WorkspaceState>()(
           const idx = kept.findIndex(w => w.id === "global");
           kept.splice(idx + 1, 0, { id: "personal", name: "Private", icon: "user", cwd: "~/Desktop", apps: [], activeTabId: null });
         }
-        // Rename urban-lab → geo if it exists
-        const urbanLabIdx = kept.findIndex(w => w.id === "urban-lab");
-        if (urbanLabIdx >= 0) {
-          kept[urbanLabIdx] = { ...kept[urbanLabIdx], id: "geo", name: "Geo Lab" };
-        }
         if (!kept.find(w => w.id === "geo")) {
           kept.push({ id: "geo", name: "Geo Lab", icon: "globe", cwd: "~/Desktop", apps: [], activeTabId: null });
         }
@@ -288,12 +283,10 @@ export const useWorkspaceStore = create<WorkspaceState>()(
           kept.push({ id: "ci-warroom", name: "War Room", icon: "briefcase", cwd: "~/Desktop", apps: [], activeTabId: null });
         }
         const storedId = s.activeWorkspaceId ?? "personal";
-        // Remap urban-lab active workspace to geo
-        const remappedId = storedId === "urban-lab" ? "geo" : storedId;
-        const activeExists = kept.find(w => w.id === remappedId);
+        const activeExists = kept.find(w => w.id === storedId);
         return {
           workspaces: kept,
-          activeWorkspaceId: activeExists ? remappedId : "personal",
+          activeWorkspaceId: activeExists ? storedId : "personal",
           appContexts: {},
           appManifests: {},
         };
