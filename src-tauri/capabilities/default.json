@@ -1,0 +1,20 @@
+{
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-set-size",
+    "core:window:allow-set-focus",
+    "shell:default",
+    "shell:allow-open",
+    "dialog:default",
+    "dialog:allow-open",
+    "dialog:allow-ask",
+    "fs:default",
+    "fs:allow-read",
+    "os:default",
+    "notification:default",
+    "notification:allow-notify"
+  ]
+}

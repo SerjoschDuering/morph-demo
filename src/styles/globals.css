@@ -1,0 +1,136 @@
+@import "./theme.css";
+@import "tailwindcss";
+
+/* ---- Base layer: won't override Tailwind utilities ---- */
+@layer base {
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+    background: transparent;
+    color: var(--text-1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbars */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.10); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.18); }
+
+  /* Code font */
+  pre code, code {
+    font-family: "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+  }
+
+  /* Focus */
+  textarea:focus, input:focus { outline: none; }
+}
+
+/* ---- Animations (always available) ---- */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes dotpulse { 0%,100%{opacity:.25} 50%{opacity:1} }
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---- Components layer: custom classes ---- */
+@layer components {
+  .cursor-blink { animation: blink 1s step-end infinite; }
+  .dot-pulse { animation: dotpulse 1.4s ease-in-out infinite; }
+
+  /* Markdown rendering */
+  .md-content { font-size: 14px; line-height: 1.7; color: var(--text-1); }
+  .md-content > *:first-child { margin-top: 0; }
+  .md-content > *:last-child { margin-bottom: 0; }
+
+  .md-content h1, .md-content h2, .md-content h3 {
+    font-weight: 600; margin: 1.2em 0 0.4em; color: var(--text-1);
+  }
+  .md-content h1 { font-size: 1.2em; }
+  .md-content h2 { font-size: 1.1em; }
+  .md-content h3 { font-size: 1.0em; }
+  .md-content p { margin: 0 0 0.6em; }
+
+  .md-content code:not(pre code) {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+  }
+
+  .md-content pre {
+    background: var(--bg-active);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    margin: 10px 0;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .md-content pre code { background: none; color: var(--text-1); padding: 0; font-size: inherit; }
+
+  .md-content ul, .md-content ol { padding-left: 1.4em; margin: 0 0 0.6em; }
+  .md-content li { margin-bottom: 0.2em; }
+  .md-content li > p { margin: 0; }
+
+  .md-content a { color: var(--accent); text-decoration: none; }
+  .md-content a:hover { text-decoration: underline; }
+
+  .md-content blockquote {
+    border-left: 3px solid var(--accent-border);
+    padding: 4px 0 4px 14px;
+    margin: 8px 0;
+    color: var(--text-2);
+  }
+
+  .md-content table { border-collapse: collapse; margin: 8px 0; font-size: 0.9em; width: 100%; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; }
+  .md-content th { background: var(--bg-active); font-weight: 600; color: var(--text-2); font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.02em; }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .md-content strong { font-weight: 600; }
+
+  /* Chat column elevation — primary orchestrator layer */
+  .chat-column-elevated {
+    box-shadow: 6px 0 32px rgba(0,0,0,0.13), 2px 0 12px rgba(0,0,0,0.09);
+    position: relative;
+    z-index: 10;
+  }
+  /* Sidebar elevation */
+  .sidebar-elevated {
+    box-shadow: 4px 0 18px rgba(0,0,0,0.08), 1px 0 6px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 9;
+  }
+
+  /* Dark mode overrides for elevation */
+  [data-theme="dark"] .chat-column-elevated {
+    box-shadow: 6px 0 32px rgba(0,0,0,0.42), 2px 0 12px rgba(0,0,0,0.30);
+  }
+  [data-theme="dark"] .sidebar-elevated {
+    box-shadow: 4px 0 18px rgba(0,0,0,0.28), 1px 0 6px rgba(0,0,0,0.18);
+  }
+
+  /* App panel card — canvas layer, visually below chat */
+  .app-panel-card {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Morph logo button animation */
+  .morph-logo-btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .morph-logo-btn:hover {
+    transform: scale(1.08) rotate(6deg);
+    box-shadow: 0 4px 14px rgba(139,92,246,0.45) !important;
+  }
+  .morph-logo-btn:active {
+    transform: scale(0.96);
+  }
+}
