@@ -80,7 +80,7 @@ Morph is that place. The cockpit.
 
 ## Compared to
 
-Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenClaw. Morph's bet is the piece none of them ship: **the agent writes React source, compiles it in the browser, mounts it as a persistent tab, and the tab feeds live state back into the chat on every turn.**
+Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenClaw. They all generate *something* UI-ish (Artifacts, in-app browser pages, a Live Canvas). Morph's bet is the shape none of them ship: **many persistent, agent-authored React tabs, compiled in-browser, each feeding live state back into the chat on every turn.** Workspace-as-first-class, not artifact-as-sidecar.
 
 <table>
   <thead>
@@ -94,25 +94,25 @@ Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenC
   </thead>
   <tbody>
     <tr>
-      <td>Agent authors + compiles UI panels</td>
-      <td align="center">✅</td>
-      <td align="center">❌</td>
-      <td align="center">❌</td>
-      <td align="center">❌</td>
+      <td>Agent generates interactive UI</td>
+      <td align="center">✅ <sub>React, compiled in-browser</sub></td>
+      <td align="center">⚠ <sub>Artifacts / Apps in chat</sub></td>
+      <td align="center">⚠ <sub>in-app browser pages</sub></td>
+      <td align="center">✅ <sub>A2UI declarative JSON</sub></td>
     </tr>
     <tr>
-      <td>Persistent workspace tabs</td>
-      <td align="center">✅</td>
+      <td>Persistent as workspace tabs</td>
+      <td align="center">✅ <sub>many tabs, survive restart</sub></td>
+      <td align="center">⚠ <sub>side panel, project-scoped</sub></td>
       <td align="center">❌</td>
-      <td align="center">❌</td>
-      <td align="center">❌</td>
+      <td align="center">⚠ <sub>single canvas slot</sub></td>
     </tr>
     <tr>
-      <td>Panel feeds state back to chat</td>
-      <td align="center">✅</td>
-      <td align="center">❌</td>
-      <td align="center">❌</td>
-      <td align="center">❌</td>
+      <td>UI ↔ chat bidirectional state</td>
+      <td align="center">✅ <sub>auto, every turn</sub></td>
+      <td align="center">⚠ <sub>only if coded</sub></td>
+      <td align="center">⚠ <sub>page-level comments</sub></td>
+      <td align="center">✅ <sub>by protocol</sub></td>
     </tr>
     <tr>
       <td>Local-first, offline-capable</td>
@@ -151,6 +151,8 @@ Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenC
     </tr>
   </tbody>
 </table>
+
+<sub>✅ full · ⚠ partial · ❌ not shipped. Verified against public docs and release notes for Cowork (GA 2026-04-09), the "new Codex" desktop update (2026-04-16/17), and OpenClaw 2026.4.15 (2026-04-16).</sub>
 
 ## Architecture
 
