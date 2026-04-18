@@ -47,7 +47,7 @@ Morph is that place. The cockpit.
 ## Key ideas
 
 - **Chat-as-orchestrator.** One prompt. The agent reaches into your whole stack via MCP + CLIs.
-- **Agent-built UI panels.** The agent writes React components. `esbuild-wasm` compiles them in the browser. They mount as persistent tabs. They talk back.
+- **Agent-built UI panels.** The agent writes React components. `esbuild-wasm` compiles them inside the Morph app in ~40ms. They mount as persistent tabs next to the chat. They talk back.
 - **State feedback loop.** Every panel pushes its live state to the chat. No copy-paste. No re-explaining. This is the core differentiator.
 - **Per-life workspaces.** Each with its own memory, skills, secrets, apps. Inheritance from a mother workspace for globals.
 - **Standards-first extensibility.** Skills, Hooks, Subagents, MCP — same primitives as Claude Code and Cursor. Drop in what you already have.
@@ -80,7 +80,7 @@ Morph is that place. The cockpit.
 
 ## Compared to
 
-Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenClaw. They all generate *something* UI-ish (Artifacts, in-app browser pages, a Live Canvas). Morph's bet is the shape none of them ship: **many persistent, agent-authored React tabs, compiled in-browser, each feeding live state back into the chat on every turn.** Workspace-as-first-class, not artifact-as-sidecar.
+Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenClaw. They all generate *something* UI-ish (Artifacts, in-app browser pages, a Live Canvas). Morph's bet is the shape none of them ship: **many persistent, agent-authored React tabs, compiled inside the desktop app, each feeding live state back into the chat on every turn.** Workspace-as-first-class, not artifact-as-sidecar.
 
 <table>
   <thead>
@@ -95,7 +95,7 @@ Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenC
   <tbody>
     <tr>
       <td>Agent generates interactive UI</td>
-      <td align="center">✅ <sub>React, compiled in-browser</sub></td>
+      <td align="center">✅ <sub>React, compiled in-app</sub></td>
       <td align="center">⚠ <sub>Artifacts / Apps in chat</sub></td>
       <td align="center">⚠ <sub>in-app browser pages</sub></td>
       <td align="center">✅ <sub>A2UI declarative JSON</sub></td>
@@ -156,7 +156,7 @@ Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenC
 
 ## Architecture
 
-Tauri 2 shell + React 19 + Zustand. A Node sidecar hosts the Claude Agent SDK. On launch, the sidecar opens a localhost WebSocket and announces its port on stdout; the Rust side reads that line once and then all traffic is WS JSON. `esbuild-wasm` compiles agent-written `.tsx` panels in the browser in ~40ms and mounts them in-process — no iframes, shared React context, `window.Morph` as the bridge.
+Tauri 2 shell + React 19 + Zustand. A Node sidecar hosts the Claude Agent SDK. On launch, the sidecar opens a localhost WebSocket and announces its port on stdout; the Rust side reads that line once and then all traffic is WS JSON. `esbuild-wasm` compiles agent-written `.tsx` panels inside the app's renderer in ~40ms and mounts them in-process — no iframes, shared React context, `window.Morph` as the bridge.
 
 The cloud arm (planned, not built in this demo) runs the same `morph-core` on a headless axum server: scoped-token auth, encrypted-SQLite secret store, Docker Engine for container stacks, trigger engine + DAG runner for deterministic + AI-mixed workflows.
 
