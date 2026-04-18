@@ -6,8 +6,12 @@
 
 <table>
   <tr>
-    <td align="center" width="50%"><img src="docs/images/app-entity-network.png" height="340" alt="A panel the agent built — entity graph rendered in-workspace, selection state feeds back into the chat" /></td>
-    <td align="center" width="50%"><img src="docs/images/app-settings-privacy.png" height="340" alt="Per-workspace settings — model choice, data residency, secret inheritance" /></td>
+    <td align="center" width="50%"><img src="docs/images/app-settings-privacy.png" height="340" alt="Per-workspace settings — default model, data residency, local vs cloud" /></td>
+    <td align="center" width="50%"><img src="docs/images/app-entity-network.png" height="340" alt="Market-tracking workspace with an entity-graph app the agent built" /></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Base view, no app open. Per-workspace settings — default model, data residency, whether the workspace runs local or on the cloud arm.</sub></td>
+    <td align="center"><sub>A "market developments" workspace with an entity-graph app open (one of six in this workspace). The chat has live access to the panel's data and the SQLite store behind it, and can act on both directly.</sub></td>
   </tr>
 </table>
 
