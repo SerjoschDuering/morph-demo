@@ -4,10 +4,12 @@
 
 *A local-first AI workspace that builds itself, with you.*
 
-<p align="center">
-  <img src="docs/images/app-entity-network.png" height="360" alt="A panel the agent built — entity graph rendered in-workspace, selection state feeds back into the chat" />
-  <img src="docs/images/app-settings-privacy.png" height="360" alt="Per-workspace settings — model choice, data residency, secret inheritance" />
-</p>
+<table>
+  <tr>
+    <td align="center" width="50%"><img src="docs/images/app-entity-network.png" height="340" alt="A panel the agent built — entity graph rendered in-workspace, selection state feeds back into the chat" /></td>
+    <td align="center" width="50%"><img src="docs/images/app-settings-privacy.png" height="340" alt="Per-workspace settings — model choice, data residency, secret inheritance" /></td>
+  </tr>
+</table>
 
 ## The problem
 
@@ -53,36 +55,98 @@ Morph is that place. The cockpit.
 
 ## See it
 
-<p align="center">
-  <strong>Empty state — chat is the interface.</strong>
-  &nbsp;&nbsp;·&nbsp;&nbsp;
-  <strong>The agent built you a tax assistant.</strong>
-</p>
-<p align="center">
-  <img src="docs/images/app-empty-state.png" height="320" alt="Empty workspace" />
-  <img src="docs/images/app-tax-assistant.png" height="320" alt="Tax assistant panel" />
-</p>
-<p align="center">
-  <strong>Orchestrating Rhino via MCP.</strong>
-  &nbsp;&nbsp;·&nbsp;&nbsp;
-  <strong>Data-viz panels on demand.</strong>
-</p>
-<p align="center">
-  <img src="docs/images/app-3d-viewer-mcp.png" height="320" alt="3D viewer + Rhino" />
-  <img src="docs/images/app-entity-network.png" height="320" alt="Entity network" />
-</p>
+<table>
+  <tr>
+    <td align="center" width="50%"><strong>Empty state — chat is the interface.</strong></td>
+    <td align="center" width="50%"><strong>The agent built you a tax assistant.</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/app-empty-state.png" height="320" alt="Empty workspace" /></td>
+    <td align="center"><img src="docs/images/app-tax-assistant.png" height="320" alt="Tax assistant panel" /></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Orchestrating Rhino via MCP.</strong></td>
+    <td align="center"><strong>Data-viz panels on demand.</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/app-3d-viewer-mcp.png" height="320" alt="3D viewer + Rhino" /></td>
+    <td align="center"><img src="docs/images/app-entity-network.png" height="320" alt="Entity network" /></td>
+  </tr>
+</table>
 
 ## Compared to
 
-See [`docs/competitive-landscape.md`](docs/competitive-landscape.md) for the up-to-date matrix vs Claude Desktop/Cowork, OpenAI Codex, and OpenClaw (fetched 2026-04-18).
+Everyone's converging on agentic desktops — Claude Cowork, OpenAI Codex, OpenClaw. Morph's bet is the piece none of them ship: **the agent writes React source, compiles it in the browser, mounts it as a persistent tab, and the tab feeds live state back into the chat on every turn.**
 
-Short version — they're all converging on agentic desktops:
-
-- **Claude Cowork** (GA Apr 9, 2026): chat + background automations + MCP connectors. Claude Artifacts render interactive apps *inside chat threads* — persistent but not as workspace tabs, and one-way (output, not state).
-- **OpenAI Codex** (Apr 16–17, 2026 "new Codex"): Computer Use, in-app browser, 90+ MCP integrations, memory, image gen. Session-scoped artifact sidebar — ephemeral, not mounted.
-- **OpenClaw** (MIT, Apr 16, 2026): self-hosted messaging-gateway + Markdown memory + A2UI Live Canvas. Canvas is declarative JSON, not agent-authored compiled code.
-
-**Morph's bet:** the agent *writes React source → compiles in-browser → mounts as a persistent tab → feeds live state back on every turn*. All four clauses together, not shipped anywhere else as of 2026-04-18.
+<table>
+  <thead>
+    <tr>
+      <th align="left"></th>
+      <th align="center">Morph</th>
+      <th align="center">Claude Cowork</th>
+      <th align="center">OpenAI Codex</th>
+      <th align="center">OpenClaw</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Agent authors + compiles UI panels</td>
+      <td align="center">✅</td>
+      <td align="center">❌</td>
+      <td align="center">❌</td>
+      <td align="center">❌</td>
+    </tr>
+    <tr>
+      <td>Persistent workspace tabs</td>
+      <td align="center">✅</td>
+      <td align="center">❌</td>
+      <td align="center">❌</td>
+      <td align="center">❌</td>
+    </tr>
+    <tr>
+      <td>Panel feeds state back to chat</td>
+      <td align="center">✅</td>
+      <td align="center">❌</td>
+      <td align="center">❌</td>
+      <td align="center">❌</td>
+    </tr>
+    <tr>
+      <td>Local-first, offline-capable</td>
+      <td align="center">✅</td>
+      <td align="center">❌</td>
+      <td align="center">⚠</td>
+      <td align="center">✅</td>
+    </tr>
+    <tr>
+      <td>Always-on cloud agent</td>
+      <td align="center">planned</td>
+      <td align="center">✅</td>
+      <td align="center">✅</td>
+      <td align="center">✅</td>
+    </tr>
+    <tr>
+      <td>Multi-model / BYOK</td>
+      <td align="center">planned</td>
+      <td align="center">❌</td>
+      <td align="center">❌</td>
+      <td align="center">✅</td>
+    </tr>
+    <tr>
+      <td>Open source</td>
+      <td align="center">MIT</td>
+      <td align="center">❌</td>
+      <td align="center">Apache-2.0</td>
+      <td align="center">MIT</td>
+    </tr>
+    <tr>
+      <td>Shipping today</td>
+      <td align="center">demo</td>
+      <td align="center">GA</td>
+      <td align="center">GA</td>
+      <td align="center">stable</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Architecture
 
